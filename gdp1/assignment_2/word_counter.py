@@ -2,7 +2,7 @@ from gdp1.common.input_helpers import str_input
 
 
 def main():
-    word_1 = str_input("Enter a word: ",)
+    word_1 = str_input("Enter a word: ")
     word_2 = str_input("Enter another word: ")
 
     if len(word_1) + len(word_2) > 29:
