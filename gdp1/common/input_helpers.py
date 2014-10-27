@@ -1,4 +1,4 @@
-def int_input(prompt="", minmax=None):
+def int_input(prompt="", minmax=None, min=None, max=None):
     """Uses `input(prompt)` to request an int value from the user, retrying if the user does not enter a valid value.
 
     @param str prompt: The prompt to display.
@@ -15,6 +15,15 @@ def int_input(prompt="", minmax=None):
             num = int(string)
             if minmax and (num < minmax[0] or num > minmax[1]):
                 print("Invalid input. The value must be a number from %i to %i." % minmax)
+                continue
+            elif min is not None and max is not None and (num < min or num > max):
+                print("Invalid input. The value must be a number from %i to %i." % (min, max))
+                continue
+            elif min is not None and num < min:
+                print("Invalid input. The value must be a number greater or equal to %i." % min)
+                continue
+            elif max is not None and num > max:
+                print("Invalid input. The value must be a number less or equal to %i." % max)
                 continue
 
             return num
