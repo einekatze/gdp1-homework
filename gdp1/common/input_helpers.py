@@ -63,3 +63,26 @@ def str_input(prompt="", max_length=0):
         if max_length != 0 and len(string) > max_length:
             print("Your text is too long. It must not exceed a length of %i characters." % max_length)
         return string
+
+
+def float_list_input(prompt="", stop_words=("stop", "end", "halt")):
+    """Uses `input(prompt)` to request a list of float values from the user, retrying if the user
+    does not enter a valid value. The user can terminate the entry loop by entering one of the `stop_words`,
+    which are "stop", "end" and "halt" by default.
+
+     @param str prompt: The prompt to display.
+     @return float: The entered value.
+    """
+    floats = []
+
+    while True:
+        try:
+            string = input(prompt).strip()
+            if not len(string):
+                continue
+            if string.lower() in stop_words:
+                return floats
+
+            floats.append(float(string))
+        except ValueError:
+            print("Invalid input. Please enter a float value.")
